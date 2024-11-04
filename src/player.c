@@ -6,7 +6,7 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 03:29:18 by aberenge          #+#    #+#             */
-/*   Updated: 2024/11/04 05:35:53 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/11/04 20:58:02 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	get_location(char ***map, t_game_infos *game_infos, t_player *player)
 		x = 0;
 		while (x < game_infos->win_width)
 		{
-			if ((*map)[y][x] == '2')
+			if ((*map)[y][x] == 'P')
 			{
 				player->pos_x = x;
 				player->pos_y = y;
@@ -57,7 +57,7 @@ int	check_wall(t_mouvement_params *params, int *new_x, int *new_y)
 		(*params->map)[params->player->pos_y][params->player->pos_x] = '0';
 		params->player->pos_x = *new_x;
 		params->player->pos_y = *new_y;
-		(*params->map)[*new_y][*new_x] = '2';
+		(*params->map)[*new_y][*new_x] = 'P';
 		return (0);
 	}
 	return (1);

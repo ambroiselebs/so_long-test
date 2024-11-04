@@ -6,7 +6,7 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 03:26:38 by aberenge          #+#    #+#             */
-/*   Updated: 2024/11/04 05:43:17 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/11/04 20:57:13 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	put_img(t_game_infos *game_infos, t_player *player,
 		mlx_put_image_to_window(game_infos->mlx,
 			game_infos->mlx_win, game_infos->wall_sprite,
 			params.pos_x, params.pos_y);
-	if (params.id == '2')
+	if (params.id == 'P')
 		mlx_put_image_to_window(game_infos->mlx,
 			game_infos->mlx_win, player->skin,
 			params.pos_x, params.pos_y);
@@ -84,7 +84,7 @@ void	init_map(char ***in_map, t_game_infos *game_infos)
 	while (i < (int) game_infos->win_height)
 		(*in_map)[i++] = malloc((game_infos->img_size + 1) * sizeof(char));
 	strcpy((*in_map)[0], "1111111111111");
-	strcpy((*in_map)[1], "1002000000001");
+	strcpy((*in_map)[1], "1P00000000001");
 	strcpy((*in_map)[2], "1001110001111");
 	strcpy((*in_map)[3], "1000010000001");
 	strcpy((*in_map)[4], "1000011111001");
