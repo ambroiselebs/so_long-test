@@ -6,7 +6,7 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 02:52:13 by aberenge          #+#    #+#             */
-/*   Updated: 2024/11/04 05:11:31 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/11/04 05:29:56 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,10 @@ int	main(void)
 	init_map(&in_map, &game_infos);
 	init_player(&in_map, &game_infos, &player);
 	draw_map(&in_map, &game_infos, &player);
-
 	move_params.map = &in_map;
 	move_params.player = &player;
 	move_params.game_infos = &game_infos;
 	mlx_key_hook(game_infos.mlx_win, handle_player_mouvement, &move_params);
 	mlx_loop(game_infos.mlx);
-
-	free_map(&in_map, &game_infos);
 	return (0);
 }
