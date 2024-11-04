@@ -6,7 +6,7 @@
 #    By: aberenge <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/02 03:05:34 by aberenge          #+#    #+#              #
-#    Updated: 2024/11/02 04:58:14 by aberenge         ###   ########.fr        #
+#    Updated: 2024/11/04 04:53:52 by aberenge         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -O3
 INCLUDES = -Iminilibx -Imlx_linux
 LIBS = -Lminilibx -lmlx -lX11 -lXext -lXrandr -lm
-SRC = main.c src/utils/init_game.c src/utils/ft_map.c
+SRC = main.c src/utils/init_game.c src/utils/ft_map.c src/player.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
