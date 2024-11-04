@@ -6,7 +6,7 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 03:26:38 by aberenge          #+#    #+#             */
-/*   Updated: 2024/11/04 05:31:28 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/11/04 05:43:17 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 #include <stdio.h>
 #include <string.h>
 
-void	free_map(char ***in_map, t_game_infos *game_infos) {
-	unsigned int i;
+void	free_map(char ***in_map, t_game_infos *game_infos)
+{
+	unsigned int	i;
 
-	if (in_map == NULL || *in_map == NULL || game_infos == NULL) {
-		return; // Nothing to free
-	}
+	if (in_map == NULL || *in_map == NULL || game_infos == NULL)
+		return ;
 	i = 0;
 	while (i < game_infos->win_height)
 		free((*in_map)[i++]);
