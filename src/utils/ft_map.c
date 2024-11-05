@@ -6,7 +6,7 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 03:26:38 by aberenge          #+#    #+#             */
-/*   Updated: 2024/11/04 20:57:13 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/11/05 17:16:54 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,26 @@
 #include <time.h>
 #include <stdio.h>
 #include <string.h>
+
+void	count_coin(char ***in_map, t_game_infos *game_infos)
+{
+	int	y;
+	int	x;
+
+	game_infos->total_coint = 0;
+	y = 0;
+	while (y < (int) game_infos->win_height)
+	{
+		x = 0;
+		while (x < (int) game_infos->win_width)
+		{
+			if ((*in_map)[y][x] == 'C')
+				game_infos->total_coint += 1;
+			x++;
+		}
+		y++;
+	}
+}
 
 void	free_map(char ***in_map, t_game_infos *game_infos)
 {
@@ -37,13 +57,25 @@ void	put_img(t_game_infos *game_infos, t_player *player,
 		mlx_put_image_to_window(game_infos->mlx,
 			game_infos->mlx_win, game_infos->back_sprite,
 			params.pos_x, params.pos_y);
-	if (params.id == '1')
+	else if (params.id == '1')
 		mlx_put_image_to_window(game_infos->mlx,
 			game_infos->mlx_win, game_infos->wall_sprite,
 			params.pos_x, params.pos_y);
-	if (params.id == 'P')
+	else if (params.id == 'C')
+		mlx_put_image_to_window(game_infos->mlx,
+			game_infos->mlx_win, game_infos->coin_sprite,
+			params.pos_x, params.pos_y);
+	else if (params.id == 'E')
+		mlx_put_image_to_window(game_infos->mlx,
+			game_infos->mlx_win, game_infos->exit_sprite,
+			params.pos_x, params.pos_y);
+	else if (params.id == 'P')
 		mlx_put_image_to_window(game_infos->mlx,
 			game_infos->mlx_win, player->skin,
+			params.pos_x, params.pos_y);
+	else
+		mlx_put_image_to_window(game_infos->mlx,
+			game_infos->mlx_win, game_infos->back_sprite,
 			params.pos_x, params.pos_y);
 }
 
@@ -84,11 +116,9 @@ void	init_map(char ***in_map, t_game_infos *game_infos)
 	while (i < (int) game_infos->win_height)
 		(*in_map)[i++] = malloc((game_infos->img_size + 1) * sizeof(char));
 	strcpy((*in_map)[0], "1111111111111");
-	strcpy((*in_map)[1], "1P00000000001");
-	strcpy((*in_map)[2], "1001110001111");
-	strcpy((*in_map)[3], "1000010000001");
-	strcpy((*in_map)[4], "1000011111001");
-	strcpy((*in_map)[5], "1000000000001");
-	strcpy((*in_map)[6], "1001000110001");
-	strcpy((*in_map)[7], "1111111111111");
+	strcpy((*in_map)[1], "10010000000C1");
+	strcpy((*in_map)[2], "1000011111001");
+	strcpy((*in_map)[3], "1P0011E000001");
+	strcpy((*in_map)[4], "1111111111111");
+	count_coin(in_map, game_infos);
 }

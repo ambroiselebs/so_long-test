@@ -6,7 +6,7 @@
 /*   By: aberenge <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 02:52:13 by aberenge          #+#    #+#             */
-/*   Updated: 2024/11/04 05:29:56 by aberenge         ###   ########.fr       */
+/*   Updated: 2024/11/05 17:24:09 by aberenge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-/* int	update(t_update params)
+void	exit_game(char ***map, t_game_infos *game_infos)
 {
-
-} */
+	printf("Total mouvments : %d\n", game_infos->counter);
+	free_map(map, game_infos);
+	exit(0);
+}
 
 void	load_images(t_game_infos *game_infos)
 {
@@ -35,6 +37,14 @@ void	load_images(t_game_infos *game_infos)
 			"assets/back.xpm",
 			&img_size,
 			&img_size);
+	game_infos->coin_sprite = mlx_xpm_file_to_image(game_infos->mlx,
+		"assets/coin.xpm",
+		&img_size,
+		&img_size);
+	game_infos->exit_sprite = mlx_xpm_file_to_image(game_infos->mlx,
+		"assets/exit.xpm",
+		&img_size,
+		&img_size);
 }
 
 int	main(void)
